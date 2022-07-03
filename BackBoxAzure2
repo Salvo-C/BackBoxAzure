@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo su
-
 cp /etc/default/grub /etc/default/grub.bak
 
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"/g' /etc/default/grub
@@ -24,5 +22,3 @@ apt install cloud-init gdisk netplan.io walinuxagent && systemctl stop walinuxag
 rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
 rm -f /etc/cloud/ds-identify.cfg
 rm -f /etc/netplan/*.yaml
-
-exit
